@@ -1,33 +1,65 @@
 # Database Car Workshop
 
-Modelagem de banco de dados para um sistema de gerenciamento de oficina mecânica.
+Projeto de modelagem e implementação de um banco de dados relacional para um sistema de oficina mecânica, com foco em entidades, relacionamentos, organização estrutural e consultas SQL.
 
-Este projeto foi desenvolvido durante meus estudos de **SQL e modelagem relacional**, utilizando **MySQL Workbench**.
+## 📊 Modelo do Banco
 
-## Entidades do sistema
+<img width="820" height="562" alt="modelo_banco_oficina" src="https://github.com/user-attachments/assets/91dac638-ba89-4f25-bc23-c77215c28466" />
 
-* Cliente
-* Veículo
-* Ordem de Serviço
-* Equipe
-* Mecânico
-* Serviço
-* Peça
+## Estrutura do Projeto
+
+- `sql/schema.sql` → criação das tabelas e relacionamentos
+- `sql/inserts.sql` → inserção de dados para testes
+- `sql/queries.sql` → consultas SQL do projeto
+
+## Tecnologias Utilizadas
+
+- SQL
+- MySQL
+- MySQL Workbench
+- Modelagem EER
+- Git
+- GitHub
+
+## Entidades do Sistema
+
+- Cliente
+- Veículo
+- Ordem de Serviço
+- Equipe
+- Mecânico
+- Serviço
+- Peça
 
 ## Relacionamentos
 
-* Um cliente pode possuir vários veículos
-* Um veículo pode possuir várias ordens de serviço
-* Uma ordem de serviço pode conter vários serviços
-* Uma ordem de serviço pode utilizar várias peças
-* Uma equipe pode possuir vários mecânicos
+- Um cliente pode possuir vários veículos
+- Um veículo pode possuir várias ordens de serviço
+- Uma ordem de serviço pode conter vários serviços
+- Uma ordem de serviço pode utilizar várias peças
+- Uma equipe pode possuir vários mecânicos
 
-## Tecnologias utilizadas
+## Consultas Implementadas
 
-* MySQL
-* MySQL Workbench
-* Modelagem EER
+O projeto inclui consultas SQL para análise e manipulação dos dados do sistema da oficina mecânica, como:
 
-## Diagrama do Banco de Dados
+- Listagem de clientes cadastrados
+- Listagem de veículos cadastrados
+- Consulta de ordens de serviço
+- Relacionamento entre cliente e veículo
+- Relacionamento entre veículo e ordem de serviço
+- Consultas com filtros e ordenação
+- Consultas com junção entre tabelas
 
-<img width="820" height="562" alt="modelo_banco_oficina" src="https://github.com/user-attachments/assets/91dac638-ba89-4f25-bc23-c77215c28466" />
+Essas consultas foram desenvolvidas para praticar comandos SQL fundamentais, como `SELECT`, `WHERE`, `ORDER BY` e `JOIN`.
+
+## Como Executar o Projeto
+
+1. Crie um banco de dados no MySQL.
+2. Execute o arquivo `sql/schema.sql` para criar as tabelas e relacionamentos.
+3. Execute o arquivo `sql/inserts.sql` para inserir os dados de teste.
+4. Execute o arquivo `sql/queries.sql` para visualizar as consultas do projeto.
+
+## Objetivo do Projeto
+
+Este projeto foi desenvolvido com o objetivo de praticar modelagem de dados, criação de tabelas, definição de relacionamentos, organização estrutural e construção de consultas SQL em um cenário de oficina mecânica.
