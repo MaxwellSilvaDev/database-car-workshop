@@ -1,31 +1,39 @@
+USE oficina_mecanica;
+GO
 -- CONSULTAS BÁSICAS
 -- 1. Listar todos os clientes
 SELECT *
 FROM Cliente;
+GO
 
 -- 2. Listar todos os veículos
 SELECT *
 FROM Veiculo;
+GO
 
 -- 3. Listar todas as ordens de serviço
 SELECT *
 FROM OrdemServico;
+GO
 
 -- FILTROS E ORDENAÇÃO
 -- 4. Listar veículos por marca em ordem alfabética
 SELECT idVeiculo, Placa, Modelo, Marca, Ano
 FROM Veiculo
 ORDER BY Marca, Modelo;
+GO
 
 -- 5. Listar ordens de serviço com status específico
 SELECT idOrdemServico, Numero, DataEmissao, DataConclusao, Valor, Status
 FROM OrdemServico
 WHERE Status = 'Em aberto';
+GO
 
 -- 6. Listar mecânicos por especialidade
 SELECT idMecanico, Nome, Especialidade
 FROM Mecanico
 ORDER BY Especialidade, Nome;
+GO
 
 -- JOINS
 -- 7. Listar clientes com seus veículos
@@ -41,6 +49,7 @@ FROM Cliente c
 INNER JOIN Veiculo v
     ON c.idCliente = v.Cliente_idCliente
 ORDER BY c.Nome;
+GO
 
 -- 8. Listar ordens de serviço com dados do veículo
 SELECT
@@ -55,6 +64,7 @@ FROM OrdemServico os
 INNER JOIN Veiculo v
     ON os.Veiculo_idVeiculo = v.idVeiculo
 ORDER BY os.DataEmissao DESC;
+GO
 
 -- 9. Listar ordens de serviço com veículo e cliente
 SELECT
@@ -72,6 +82,7 @@ INNER JOIN Veiculo v
 INNER JOIN Cliente c
     ON v.Cliente_idCliente = c.idCliente
 ORDER BY os.idOrdemServico;
+GO
 
 -- 10. Listar equipes e seus mecânicos
 SELECT
@@ -82,6 +93,7 @@ FROM Equipe e
 INNER JOIN Mecanico m
     ON e.idEquipe = m.Equipe_idEquipe
 ORDER BY e.NomeEquipe, m.Nome;
+GO
 
 -- SERVIÇOS E PEÇAS POR ORDEM
 -- 11. Listar serviços utilizados em cada ordem de serviço
@@ -98,6 +110,7 @@ INNER JOIN OrdemServico_Servico oss
 INNER JOIN Servico s
     ON oss.Servico_idServico = s.idServico
 ORDER BY os.idOrdemServico;
+GO
 
 -- 12. Listar peças utilizadas em cada ordem de serviço
 SELECT
@@ -113,6 +126,7 @@ INNER JOIN OrdemServico_Peca osp
 INNER JOIN Peca p
     ON osp.Peca_idPeca = p.idPeca
 ORDER BY os.idOrdemServico;
+GO
 
 -- AGREGAÇÕES
 -- 13. Quantidade de veículos por cliente
@@ -124,6 +138,7 @@ INNER JOIN Veiculo v
     ON c.idCliente = v.Cliente_idCliente
 GROUP BY c.Nome
 ORDER BY QuantidadeVeiculos DESC;
+GO
 
 -- 14. Quantidade de ordens de serviço por status
 SELECT
@@ -132,6 +147,7 @@ SELECT
 FROM OrdemServico
 GROUP BY Status
 ORDER BY TotalOrdens DESC;
+GO
 
 -- 15. Valor total das ordens de serviço por cliente
 SELECT
@@ -144,6 +160,7 @@ INNER JOIN OrdemServico os
     ON v.idVeiculo = os.Veiculo_idVeiculo
 GROUP BY c.Nome
 ORDER BY ValorTotalGasto DESC;
+GO
 
 -- 16. Quantidade de mecânicos por equipe
 SELECT
@@ -154,6 +171,7 @@ INNER JOIN Mecanico m
     ON e.idEquipe = m.Equipe_idEquipe
 GROUP BY e.NomeEquipe
 ORDER BY QuantidadeMecanicos DESC;
+GO
 
 -- 17. Clientes que nunca cadastraram veículos
 SELECT
@@ -163,6 +181,7 @@ FROM Cliente c
 LEFT JOIN Veiculo v
     ON c.idCliente = v.Cliente_idCliente
 WHERE v.idVeiculo IS NULL;
+GO
 
 -- 18. Veículos sem ordens de serviço
 SELECT
@@ -174,6 +193,7 @@ FROM Veiculo v
 LEFT JOIN OrdemServico os
     ON v.idVeiculo = os.Veiculo_idVeiculo
 WHERE os.idOrdemServico IS NULL;
+GO
 
 -- 19. Ordem de serviço com maior valor
 SELECT
@@ -186,6 +206,7 @@ WHERE Valor = (
     SELECT MAX(Valor)
     FROM OrdemServico
 );
+GO
 
 -- 20. Total gasto com serviços por ordem de serviço
 SELECT
@@ -199,6 +220,7 @@ INNER JOIN Servico s
     ON oss.Servico_idServico = s.idServico
 GROUP BY os.idOrdemServico, os.Numero
 ORDER BY TotalServicos DESC;
+GO
 
 -- 21. Total gasto com peças por ordem de serviço
 SELECT
@@ -212,6 +234,7 @@ INNER JOIN Peca p
     ON osp.Peca_idPeca = p.idPeca
 GROUP BY os.idOrdemServico, os.Numero
 ORDER BY TotalPecas DESC;
+GO
 
 -- 22. Resumo geral da ordem de serviço
 SELECT
@@ -227,3 +250,4 @@ INNER JOIN Veiculo v
 INNER JOIN Cliente c
     ON v.Cliente_idCliente = c.idCliente
 ORDER BY os.idOrdemServico;
+GO
