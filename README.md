@@ -2,6 +2,8 @@
 
 Projeto de modelagem e implementação de um banco de dados relacional para um sistema de oficina mecânica, com foco em entidades, relacionamentos, organização estrutural e consultas SQL.
 
+Este projeto foi desenvolvido para praticar modelagem de dados, criação de tabelas, definição de chaves primárias e estrangeiras, inserção de dados e consultas SQL em um cenário de oficina mecânica, utilizando **SQL Server**.
+
 ## 📊 Modelo do Banco
 
 <img width="820" height="562" alt="modelo_banco_oficina" src="https://github.com/user-attachments/assets/91dac638-ba89-4f25-bc23-c77215c28466" />
@@ -15,9 +17,9 @@ Projeto de modelagem e implementação de um banco de dados relacional para um s
 ## Tecnologias Utilizadas
 
 - SQL
-- MySQL
-- MySQL Workbench
-- Modelagem EER
+- SQL Server
+- SQL Server Management Studio (SSMS)
+- Modelagem de Dados
 - Git
 - GitHub
 
@@ -50,8 +52,9 @@ O projeto inclui consultas SQL para análise e manipulação dos dados do sistem
 - Relacionamento entre veículo e ordem de serviço
 - Consultas com filtros e ordenação
 - Consultas com junção entre tabelas
+- Consultas com agregações e visão analítica
 
-Essas consultas foram desenvolvidas para praticar comandos SQL fundamentais, como `SELECT`, `WHERE`, `ORDER BY` e `JOIN`.
+Essas consultas foram desenvolvidas para praticar comandos SQL fundamentais, como `SELECT`, `WHERE`, `ORDER BY`, `JOIN`, `COUNT` e `SUM`.
 
 ## Exemplos de Consultas SQL
 
@@ -102,11 +105,11 @@ ORDER BY TotalPecas DESC;
 
 ## Como Executar o Projeto
 
-1. Crie um banco de dados no MySQL.
+1. Crie o banco de dados no SQL Server.
 2. Execute o arquivo `sql/schema.sql` para criar as tabelas e relacionamentos.
 3. Execute o arquivo `sql/inserts.sql` para inserir os dados de teste.
 4. Execute o arquivo `sql/queries.sql` para visualizar as consultas do projeto.
 
 ## Objetivo do Projeto
 
-Este projeto foi desenvolvido com o objetivo de praticar modelagem de dados, criação de tabelas, definição de relacionamentos, organização estrutural e construção de consultas SQL em um cenário de oficina mecânica.
+Este projeto foi desenvolvido com o objetivo de praticar modelagem de dados, criação de tabelas, definição de relacionamentos, inserção de dados e construção de consultas SQL em um cenário de oficina mecânica.
