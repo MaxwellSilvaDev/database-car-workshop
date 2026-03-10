@@ -53,6 +53,53 @@ O projeto inclui consultas SQL para análise e manipulação dos dados do sistem
 
 Essas consultas foram desenvolvidas para praticar comandos SQL fundamentais, como `SELECT`, `WHERE`, `ORDER BY` e `JOIN`.
 
+## Exemplos de Consultas SQL
+
+### 1. Valor total das ordens de serviço por cliente
+
+```sql
+SELECT
+    c.Nome AS Cliente,
+    SUM(os.Valor) AS ValorTotalGasto
+FROM Cliente c
+INNER JOIN Veiculo v
+    ON c.idCliente = v.Cliente_idCliente
+INNER JOIN OrdemServico os
+    ON v.idVeiculo = os.Veiculo_idVeiculo
+GROUP BY c.Nome
+ORDER BY ValorTotalGasto DESC;
+```
+
+### 2. Veículos sem ordens de serviço
+
+```sql
+SELECT
+    v.idVeiculo,
+    v.Placa,
+    v.Modelo,
+    v.Marca
+FROM Veiculo v
+LEFT JOIN OrdemServico os
+    ON v.idVeiculo = os.Veiculo_idVeiculo
+WHERE os.idOrdemServico IS NULL;
+```
+
+### 3. Total gasto com peças por ordem de serviço
+
+```sql
+SELECT
+    os.idOrdemServico,
+    os.Numero,
+    SUM(p.Preco * osp.Quantidade) AS TotalPecas
+FROM OrdemServico os
+INNER JOIN OrdemServico_Peca osp
+    ON os.idOrdemServico = osp.OrdemServico_idOrdemServico
+INNER JOIN Peca p
+    ON osp.Peca_idPeca = p.idPeca
+GROUP BY os.idOrdemServico, os.Numero
+ORDER BY TotalPecas DESC;
+```
+
 ## Como Executar o Projeto
 
 1. Crie um banco de dados no MySQL.
